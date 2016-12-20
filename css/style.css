@@ -1,0 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.wrapper{
+	width: 980px;
+	margin:auto;
+}
+.home{
+
+}
+.sidebar{
+	float: left;
+	width: 300px;
+}
+.content{
+	float: left;
+	width: 680px;
+}
+.menu{
+	list-style: none;
+}
+.menu ul{
+	list-style: none;
+	padding-left: 20px;
+}
+.menu li{
+	list-style: none;
+}
+.pagination > li > a.active{
+	background-color: #337ab7!important;
+	color: #fff!important;
+}
