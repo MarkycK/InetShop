@@ -8,8 +8,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Catalog</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/style.css">
 </head>
 <body>
 	<a href="<?=PATH?>" class="home">Главаня</a>
@@ -18,7 +18,7 @@
 			<nav>
 			<ul id="accordion" class="menu">
 				<?php 
-				echo $categories_menu
+				echo $categories_menu;
 				?>
 			</ul>
 			</nav>
@@ -27,20 +27,32 @@
 			<div class="row">
 			<?php print_arr($breadcrumbs);?>
 			</div>
-			<div class="row ">
-			<?php if($products):?>
-					<nav class="text-center" aria-label="Page navigation ">
-					  <ul class="pagination">
-					     <?php if($count_pages > 1): ?>
-					     <?php echo $pagination; ?>
-						 <?php endif; ?>
-					  </ul>
-					</nav>
+			<div class="row">
+				<div class="perpage">
+					<select name="perage" id="perpage">
+						<?php 
+						  foreach($option_perpage as $option): 
+						  	?>
+						  <option <?php if($perpage == $option) echo"Selected"; ?> value="<?=$option?>"><?=$option?> товаров на страницу</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+				<div class="">
+				<?php if($products):?>
+						<nav class="text-center" aria-label="Page navigation ">
+						  <ul class="pagination ajax">
+						     <?php if($count_pages > 1): ?>
+						    <?php echo $pagination; ?> 
+
+							 <?php endif; ?>
+						  </ul>
+						</nav>
+				</div>
 			</div><!--/pagination -->
 			<div class="row">
 				<div class="products">
 					<?php foreach($products as $product): ?> 
-					<a href="<?=PATH?>?product.php?product=<?=$product['id']?>"><?=$product['title']?></a><br>
+					<a href="<?=PATH?>product.php?product=<?=$product['id']?>"><?=$product['title']?></a><br>
 					<?php endforeach; ?>
 					<?php else:?>
 						<p>Здесь товаров нет</p>
@@ -62,8 +74,11 @@
 
 <script type="text/javascript" src="<?=PATH?>Js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="<?=PATH?>Js/bootstrap.js"></script>
-<script type="text/javascript" src="<?=PATH?>Js/jquery.cookie.js"></script>
-<script type="text/javascript" src="<?=PATH?>Js/jquery.accordion.js"></script>
+<script type='text/javascript' src='<?=PATH?>js/plugins/jquery.cookie.js'></script>
+<script type='text/javascript' src='<?=PATH?>js/plugins/jquery.hoverIntent.minified.js'></script>
+<script type='text/javascript' src='<?=PATH?>js/plugins/jquery.dcjqaccordion.2.7.js'></script>
+<!-- <script type="text/javascript" src="<?=PATH?>Js/jquery.cookie.js"></script>
+<script type="text/javascript" src="<?=PATH?>Js/jquery.accordion.js"></script> -->
 <script type="text/javascript" src="<?=PATH?>Js/script.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
-	include "config.php";
-	include "function.php";
-	include "catalog.php";
+	include "lib/config.php";
+	include "lib/function.php";
+	include "lib/catalog.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,12 @@
 			<div class="row">
 			<?php print_arr($breadcrumbs);?>
 			</div>
-			<?=$_GET['product']?>
+			<div class="product">
+			    <?php if(isset($get_one_product)): ?>
+				<?php print_arr($get_one_product); ?>
+				<?php else: echo "Такого товара нет"; ?>
+				<?php endif; ?>
+			</div>
 		</div>
 	</div>
 	</body>

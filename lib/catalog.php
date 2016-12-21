@@ -2,7 +2,17 @@
 	$categories = get_cat();
 	$categories_tree = map_tree($categories);
 	$categories_menu = categories_to_string($categories_tree);
+
+	if(isset($_GET['product'])){
+		$product_id = (int)$_GET['product'];
+		// массив данных о продукте
+		$get_one_product = get_one_product($product_id);
+		// получение ИД категории
+		$id = $get_one_product['parent'];
+	}else{
 		$id = (int)$_GET['category'];
+	}
+	
 		//хлебные крошки
 		 $breadcrumbs_array = breadcrumbs($categories, $id);
 		 if($breadcrumbs_array){
@@ -10,8 +20,13 @@
 				foreach ($breadcrumbs_array as $id => $title){
 		 		  $breadcrumbs .="<a href='".PATH."?category={$id}'>{$title}</a> / ";
 		        }
-		        $breadcrumbs = rtrim($breadcrumbs, " / ");
-		        $breadcrumbs = preg_replace("#(.+)?<a.+>(.+)</a>$#", "$1$2", $breadcrumbs);
+		        if(!isset($get_one_product)){
+					$breadcrumbs = rtrim($breadcrumbs, " / ");
+			        $breadcrumbs = preg_replace("#(.+)?<a.+>(.+)</a>$#", "$1$2", $breadcrumbs);
+		        }else{
+					$breadcrumbs .= $get_one_product['title'];
+		        }
+		       
 			}else{
 				    $breadcrumbs = "<a href='".PATH."'>Главаня</a> / Каталог";
 			}
@@ -21,7 +36,7 @@
 
 		 	//----------- Pagination  ------------//
 		 	// кол-ство товаров на страницу
-		 	$perpage = 5;
+		 	$perpage = (int)$_COOKIE['per_page'] ? $_COOKIE['per_page'] : PERPAGE;
 		 	//  общее колство товаров
 		 	$count_goods = count_goods($ids);
 		 	// необходимое кол-ство страниц

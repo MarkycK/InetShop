@@ -81,6 +81,13 @@ function get_products($ids, $start_pos, $perpage){
 	return $products;
 
 }
+/*получение отдельного товара*/
+function get_one_product($product_id){
+	global $connection;
+	$query = "SELECT * FROM products WHERE id = $product_id LIMIT 1";
+	$res = mysqli_query($connection, $query);
+	return mysqli_fetch_assoc($res);
+}
 /*Кол-ство товаров*/
 function count_goods($ids){
 	global $connection;
@@ -141,4 +148,6 @@ function pagination($page, $count_pages){
 	}
 	return "<li>".$startpage."</li>"."<li>".$back."</li>"."<li>".$page2left."</li>"."<li>".$page1left."</li>"."<li><a class='active' style='background-color:#337ab7; color:#fff'>".$page."</a></li>"."<li>".$page1right."</li>"."<li>".$page2right."</li>"."<li>".$forward."</li>"."<li>".$endpage."</li>";
 }
+
+
 ?>
