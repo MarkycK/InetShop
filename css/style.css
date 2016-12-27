@@ -2,30 +2,38 @@
 	margin: 0;
 	padding: 0;
 }
-.wrapper{
-	width: 980px;
-	margin:auto;
-	background: #333;
+.indent{
+	margin:40px 0;
+}
+.indent_side{
+	padding:0 15px;
 }
 .sidebar{
-	float: left;
-	width: 300px;
-}
+	border: 1px solid #337ab7;
+	border-radius: 5px;
+}	
 .content{
-	float: left;
-	width: 680px;
-	overflow: hidden;
-}
-.content .row{
-	overflow:hidden!important;
-}
-.menu{
-	list-style: none;
+	border: 1px solid #337ab7;
+	padding: 0 10px!;
+	border-radius: 5px;
 }
 .menu ul{
-	list-style: none;
+	list-style: none!important;
 	padding-left: 20px;
 }
 .menu li{
 	list-style: none;
+}	
+html body div.container div.wrapper div.content.col-md-9 div.row.indent_side pre.breadcrumbs{
+	width: 824px;
+	overflow:hidden;
+	transition: all 0.5s;
 }
+/* html body div.container div.wrapper div.content.col-md-9 div.row.indent_side pre.breadcrumbs:hover{
+  box-shadow: 0 0 16px rgba(0,0,0, .5);
+  width:100%;
+  overflow:visible;
+  position: absolute;
+  top:0;
+  left:0;
+}	 */

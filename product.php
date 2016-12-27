@@ -8,30 +8,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Catalog</title>
-	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/bootstrap.css">
 </head>
 <body>
-	<a href="<?=PATH?>" class="home">Главаня</a>
-	<div class="wrapper">
-		<div class="sidebar col-md-3">
-			<nav>
-			<ul id="accordion" class="menu">
-				<?php 
-				echo $categories_menu
-				?>
-			</ul>
-			</nav>
-		</div>
-		<div class="content col-md-9">
-			<div class="row">
-			<?php print_arr($breadcrumbs);?>
+	<nav class="container indent">
+		<a href="<?=PATH?>" class="home">Главаня</a>
+	</nav>
+	<div class="container">
+		<div class="wrapper">
+			<div class="sidebar col-md-3">
+				<nav>
+					<ul id="accordion" class="menu">
+						<?php 
+						echo $categories_menu
+						?>
+					</ul>
+				</nav>
 			</div>
-			<div class="product">
-			    <?php if(isset($get_one_product)): ?>
-				<?php print_arr($get_one_product); ?>
-				<?php else: echo "Такого товара нет"; ?>
-				<?php endif; ?>
+			<div class="content col-md-9">
+				<div class="row indent_side">
+					<?php print_arr($breadcrumbs);?>
+				</div>
+				<div class="product">
+					<?php if(isset($get_one_product)): ?>
+						<?php print_arr($get_one_product); ?>
+					<?php else: echo "Такого товара нет"; ?>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
 	</div>

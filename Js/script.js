@@ -16,4 +16,7 @@ $(document).ready(function(){
 		$.cookie('per_page', perPage, {expires: 1});
 		window.location =location.href;//перезапрос страницы
 	});
+	$("pre.breadcrumbs").on("click", function(){
+		console.log("cliakkkk");
+	});
 })

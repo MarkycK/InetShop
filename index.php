@@ -8,12 +8,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Catalog</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/bootstrap.css">
 </head>
 <body>
+	<nav class="container indent">
 	<a href="<?=PATH?>" class="home">Главаня</a>
-	<div class="wrapper">
+	</nav>
+	<div class="container">
 		<div class="sidebar col-md-3">
 			<nav>
 			<ul id="accordion" class="menu">
@@ -24,10 +26,10 @@
 			</nav>
 		</div>
 		<div class="content col-md-9">
-			<div class="row">
-			<?php print_arr($breadcrumbs);?>
+			<div class="row indent_side">
+				<?php print_arr($breadcrumbs);?>
 			</div>
-			<div class="row">
+			<div class="row indent_side">
 				<div class="perpage">
 					<select name="perage" id="perpage">
 						<?php 
@@ -39,8 +41,8 @@
 				</div>
 				<div class="">
 				<?php if($products):?>
-						<nav class="text-center" aria-label="Page navigation ">
-						  <ul class="pagination ajax">
+						<nav class="text-center" aria-label="Page navigation" >
+						  <ul class="pagination ajax" style="list-style:none">
 						     <?php if($count_pages > 1): ?>
 						    <?php echo $pagination; ?> 
 
@@ -49,17 +51,17 @@
 						</nav>
 				</div>
 			</div><!--/pagination -->
-			<div class="row">
-				<div class="products">
+			<div class="row indent_side">
+				<div class="products indent_side">
 					<?php foreach($products as $product): ?> 
-					<a href="<?=PATH?>product.php?product=<?=$product['id']?>"><?=$product['title']?></a><br>
+					<a href="<?=PATH?>product/<?=$product['id']?>"><?=$product['title']?></a><br>
 					<?php endforeach; ?>
 					<?php else:?>
 						<p>Здесь товаров нет</p>
 					<?php endif; ?>
 				</div>
 			</div>
-			<div class="row ">
+			<div class="row">
 					<nav class="text-center" aria-label="Page navigation ">
 					  <ul class="pagination">
 					     <?php if($count_pages > 1): ?>
