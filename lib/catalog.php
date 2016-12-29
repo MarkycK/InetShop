@@ -1,12 +1,17 @@
 <?php
+	include 'config.php';
+	include 'function.php';
 	$categories = get_cat();
 	$categories_tree = map_tree($categories);
 	$categories_menu = categories_to_string($categories_tree);
-
+/*
+может быть либо ID продукта, либо ID категории .. если есть ID прод тогда ID категории возьмем из поля parent, иначе - возьмем сразу из параметра
+*/
 	if(isset($_GET['product'])){
-		$product_id = (int)$_GET['product'];
+		$product_alias = $_GET['product'];
+		// $product_id = (int)$_GET['product'];
 		// массив данных о продукте
-		$get_one_product = get_one_product($product_id);
+		$get_one_product = get_one_product($product_alias);
 		// получение ИД категории
 		$id = $get_one_product['parent'];
 	}else{

@@ -1,6 +1,4 @@
 <?php
-	include "lib/config.php";
-	include "lib/function.php";
 	include "lib/catalog.php";
 ?>
 <!DOCTYPE html>

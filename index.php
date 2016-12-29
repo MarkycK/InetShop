@@ -1,6 +1,4 @@
 <?php
-	include "lib/config.php";
-	include "lib/function.php";
 	include "lib/catalog.php";
 ?>
 <!DOCTYPE html>
@@ -54,7 +52,7 @@
 			<div class="row indent_side">
 				<div class="products indent_side">
 					<?php foreach($products as $product): ?> 
-					<a href="<?=PATH?>product/<?=$product['id']?>"><?=$product['title']?></a><br>
+					<a href="<?=PATH?>product/<?=$product['alias']?>"><?=$product['title']?></a><br>
 					<?php endforeach; ?>
 					<?php else:?>
 						<p>Здесь товаров нет</p>
