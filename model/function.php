@@ -38,7 +38,7 @@ function categories_to_string($data){
 /*  Шаблон вивода категорий*/
 function categories_to_template($category){
 	ob_start();
-	include "category_template.php";
+	include "/views/category_template.php";
 	return ob_get_clean();
 }
 function breadcrumbs($array, $id){
@@ -86,6 +86,14 @@ function get_one_product($product_alias){
 	global $connection;
 	$product_alias = mysqli_real_escape_string($connection, $product_alias);
 	$query = "SELECT * FROM products WHERE alias = '$product_alias'";
+	$res = mysqli_query($connection, $query);
+	return mysqli_fetch_assoc($res);
+}
+/* получение чпу категорий*/
+function get_category($category_alias){
+	global $connection;
+	$product_alias = mysqli_real_escape_string($connection, $category_alias);
+	$query = "SELECT * FROM categories WHERE alias = '$category_alias'";
 	$res = mysqli_query($connection, $query);
 	return mysqli_fetch_assoc($res);
 }

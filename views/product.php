@@ -1,13 +1,14 @@
 <?php
-	include "lib/catalog.php";
+defined("CATALOG") or 
+header("Location: 404.php"); /* Redirect browser */
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Catalog</title>
-	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?=PATH?>css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="<?=PATH?>views/css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?=PATH?>views/css/bootstrap.css">
 </head>
 <body>
 	<nav class="container indent">
@@ -39,10 +40,10 @@
 	</div>
 	</body>
 
-<script type="text/javascript" src="<?=PATH?>Js/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="<?=PATH?>Js/bootstrap.js"></script>
-<script type="text/javascript" src="<?=PATH?>Js/jquery.cookie.js"></script>
-<script type="text/javascript" src="<?=PATH?>Js/jquery.accordion.js"></script>
-<script type="text/javascript" src="<?=PATH?>Js/script.js"></script>
+<script type="text/javascript" src="<?=PATH?>views/Js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="<?=PATH?>views/Js/bootstrap.js"></script>
+<script type="text/javascript" src="<?=PATH?>views/Js/jquery.cookie.js"></script>
+<script type="text/javascript" src="<?=PATH?>views/Js/jquery.accordion.js"></script>
+<script type="text/javascript" src="<?=PATH?>views/Js/script.js"></script>
 </body>
 </html>

@@ -1,7 +1,17 @@
 AddDefaultCharset utf-8
+Options -Indexes
 
 RewriteEngine On
 RewriteBase /CatalogTovarov/
-RewriteRule ^product/([a-z0-9-]+) product.php?product=$1
-RewriteRule ^category/(\d+) index.php?category=$1 [QSA]
+
+#при зверненні до файла  RewriteRule .* index.php ігнорується
+RewriteCond %{REQUEST_FILENAME} !-f 
+
+#при зверненні до папкі  RewriteRule .* index.php ігнорується і ми бачім лістинг каталога
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule .* index.php
+
+#RewriteRule ^product/([a-z0-9-]+) product.php?product=$1
+#RewriteRule ^category/([a-z0-9-]+) index.php?category=$1 [QSA]
  
