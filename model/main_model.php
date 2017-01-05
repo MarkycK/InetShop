@@ -30,6 +30,7 @@ function map_tree($dataset){
 }
 /*Дерево в HTML*/
 function categories_to_string($data){
+	$string = null;
 	foreach ($data as $item){
 		$string .= categories_to_template($item);
 	}
@@ -41,85 +42,18 @@ function categories_to_template($category){
 	include "/views/category_template.php";
 	return ob_get_clean();
 }
-function breadcrumbs($array, $id){
-	if(!$id) return false;
 
-	$count = count($array);
-	$breadcrumbs_array = array();
-	for($i = 0; $i < $count; $i++){
-		if($array[$id]){
-			$breadcrumbs_array[$array[$id]['id']] = $array[$id]['title'];
-			$id = $array[$id]['parent'];
-		}else break;
-	}
-	return array_reverse($breadcrumbs_array, true);
-}
-/*Получение ID дочерних категорий*/
-function cats_id($array, $id){
-	if(!$id) return false;
-	foreach ($array as $item) {
-		if($item['parent'] == $id){
-			$data .= $item['id'] .", ";
-			$data .= cats_id($array, $item['id']);
-		}
-	}
-	return $data;
-}
-/*Получение товаров*/
-function get_products($ids, $start_pos, $perpage){
-	global $connection;
-	if($ids){
-		$query = "SELECT * FROM products WHERE parent IN($ids) ORDER BY title LIMIT $start_pos, $perpage";
-	}else{
-		$query = "SELECT * FROM products ORDER BY title LIMIT $start_pos, $perpage";
-	}
-	$res = mysqli_query($connection, $query);
-	$products = array();
-	while($row = mysqli_fetch_assoc($res)){
-		$products[] = $row;
-	}
-	return $products;
-
-}
-/*получение отдельного товара*/
-function get_one_product($product_alias){
-	global $connection;
-	$product_alias = mysqli_real_escape_string($connection, $product_alias);
-	$query = "SELECT * FROM products WHERE alias = '$product_alias'";
-	$res = mysqli_query($connection, $query);
-	return mysqli_fetch_assoc($res);
-}
-/* получение чпу категорий*/
-function get_category($category_alias){
-	global $connection;
-	$product_alias = mysqli_real_escape_string($connection, $category_alias);
-	$query = "SELECT * FROM categories WHERE alias = '$category_alias'";
-	$res = mysqli_query($connection, $query);
-	return mysqli_fetch_assoc($res);
-}
-/*Кол-ство товаров*/
-function count_goods($ids){
-	global $connection;
-	if(!$ids){
-		$query = "SELECT COUNT(*) FROM products";
-	}else{
-		$query = "SELECT COUNT(*) FROM products WHERE parent IN($ids)";
-	}
-	$res = mysqli_query($connection, $query);
-	$count_goods = mysqli_fetch_row($res);
-	return $count_goods[0];
-}
 /* Постраницная навигация*/
 function pagination($page, $count_pages, $modrew = true){
 	// << < 3 4 5 6 7 > >> 
-	// $back - ссілка назад
-	// $forward - ссилка вперед
-	// $startpage - cсилка на перв стран
-	//  $endpage - ссилка на посл стран
-	// $page2left - вторая страница слева
-	// $page1left - первая страница слева
-	// $page2right - вторая страница справа
-	// $page1right  - первая страница справа
+	$back = null; // ссілка назад
+	$forward = null; //- ссилка вперед
+	$startpage = null; //- cсилка на перв стран
+	 $endpage = null; //- ссилка на посл стран
+	$page2left = null; //- вторая страница слева
+	$page1left = null; //- первая страница слева
+	$page2right = null; //- вторая страница справа
+	$page1right = null; // - первая страница справа
 
 	$uri = "?";
 	 if(!$modrew){
@@ -170,6 +104,17 @@ function pagination($page, $count_pages, $modrew = true){
 	}
 	return "<li>".$startpage."</li>"."<li>".$back."</li>"."<li>".$page2left."</li>"."<li>".$page1left."</li>"."<li><a class='active' style='background-color:#337ab7; color:#fff'>".$page."</a></li>"."<li>".$page1right."</li>"."<li>".$page2right."</li>"."<li>".$forward."</li>"."<li>".$endpage."</li>";
 }
+function breadcrumbs($array, $id){
+	if(!$id) return false;
 
-
+	$count = count($array);
+	$breadcrumbs_array = array();
+	for($i = 0; $i < $count; $i++){
+		if(isset($array[$id])){
+			$breadcrumbs_array[$array[$id]['id']] = $array[$id]['title'];
+			$id = $array[$id]['parent'];
+		}else break;
+	}
+	return array_reverse($breadcrumbs_array, true);
+}
 ?>
