@@ -27,11 +27,8 @@ header("Location: 404.php"); /* Redirect browser */
 				<div class="row indent_side">
 					<?php print_arr($breadcrumbs);?>
 				</div>
-				<div class="product">
-					<?php if(isset($get_one_product)): ?>
-						<?php print_arr($get_one_product); ?>
-					<?php else: echo "Такого товара нет"; ?>
-					<?php endif; ?>
+				<div class="row indent_side">
+					<?php echo $page['text']; ?>
 				</div>
 			</div>
 		</div>

@@ -10,6 +10,9 @@
 				),
 			array('url' => '#^category/(?P<category_alias>[a-z0-9-]+)#i',
 				  'view' => 'category'
+				),
+			array('url' => '#^page/(?P<page_alias>[a-z0-9-]+)#i',
+				  'view' => 'page'
 				)
 			);
 	$url = str_replace("/CatalogTovarov/",'',$_SERVER['REQUEST_URI']);

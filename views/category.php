@@ -11,20 +11,18 @@ header("Location: 404.php"); /* Redirect browser */
 	<link rel="stylesheet" type="text/css" href="<?=PATH?>views/css/bootstrap.css">
 </head>
 <body>
-	<nav class="container indent">
-	<a href="<?=PATH?>" class="home">Главаня</a>
-	</nav>
 	<div class="container">
 		<div class="sidebar col-md-3">
 			<nav>
-			<ul id="accordion" class="menu">
-				<?php 
-				echo $categories_menu;
-				?>
-			</ul>
+			<?php 
+				include "sidebar.php";
+			?>
 			</nav>
 		</div>
 		<div class="content col-md-9">
+			<div class="row ">
+				<?php include 'menu.php';?>
+			</div>
 			<div class="row indent_side">
 				<?php print_arr($breadcrumbs);?>
 			</div>

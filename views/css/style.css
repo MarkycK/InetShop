@@ -29,6 +29,13 @@ html body div.container div.wrapper div.content.col-md-9 div.row.indent_side pre
 	overflow:hidden;
 	transition: all 0.5s;
 }
+html body div.container div.content.col-md-9 div.row ul.main_menu.indent_side{
+	padding-top: 10px;
+}
+html body div.container div.content.col-md-9 div.row ul.main_menu.indent_side li{
+	display: inline;
+	padding:0 10px;
+}
 /* html body div.container div.wrapper div.content.col-md-9 div.row.indent_side pre.breadcrumbs:hover{
   box-shadow: 0 0 16px rgba(0,0,0, .5);
   width:100%;
